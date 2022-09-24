@@ -26,7 +26,11 @@ const context = ({ req }) => {
 
 const createServer = async () => {
   const app = express();
-  app.use(express.static("client/build"));
+  app.use(express.static("/client/build"));
+  app.use("/", (req, res) => {
+    res.send("Hello World");
+  });
+
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
