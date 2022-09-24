@@ -5,6 +5,7 @@ const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const port = process.env.PORT || 4000;
 
@@ -26,10 +27,10 @@ const context = ({ req }) => {
 
 const createServer = async () => {
   const app = express();
-  app.use(express.static("/client/build"));
-  // app.use("/", (req, res) => {
-  //   res.send("Hello World");
-  // });
+  app.use(express.static(path.resolve(__dirname, "/client/build")));
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "/client/build", "index.html"));
+  });
 
   const apolloServer = new ApolloServer({
     typeDefs,
