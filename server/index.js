@@ -28,11 +28,11 @@ const context = ({ req }) => {
 const createServer = async () => {
   const app = express();
   app.use("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+    res.sendFile(path.join(__dirname + "/client/build", "index.html"));
   });
-  app.use(express.static(path.resolve(__dirname, "client/build")));
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
   app.get("*", function (request, response) {
-    response.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+    response.sendFile(path.join(__dirname + "/client/build", "index.html"));
   });
 
   const apolloServer = new ApolloServer({
