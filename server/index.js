@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { ApolloServer } = require("apollo-server-express");
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
@@ -27,6 +28,7 @@ const context = ({ req }) => {
 
 const createServer = async () => {
   const app = express();
+  app.use(cors());
   app.use(express.static(path.join(__dirname, "./client/build")));
 
   app.get("/", function (req, res) {
