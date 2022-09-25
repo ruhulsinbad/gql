@@ -22,9 +22,9 @@
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-scripts": "^5.0.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ruhulsinbad/gql.git"
