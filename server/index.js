@@ -28,7 +28,7 @@ const context = ({ req }) => {
 const createServer = async () => {
   const app = express();
   app.use("/", (req, res) => {
-    res.send("Hello World");
+    res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
   });
   app.use(express.static(path.resolve(__dirname, "client/build")));
   app.get("*", function (request, response) {
